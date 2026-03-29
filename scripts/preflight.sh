@@ -66,7 +66,7 @@ _valid() {
 _parse_args() {
     if [ $# -eq 0 ]; then
         _okcat '📋' "无安装参数"
-        _okcat '⚙️' "当前内核：$KERNEL_NAME"
+        _okcat '🔧' "当前内核：$KERNEL_NAME"
         [ -n "$CLASH_CONFIG_URL" ] && _okcat '🔗' "当前配置：$CLASH_CONFIG_URL"
         return 0
     fi
@@ -175,6 +175,10 @@ _load_zip() {
 
 _download_zip() {
     (($#)) || return 0
+
+    # 确保 zip 目录存在
+    mkdir -p "$ZIP_BASE_DIR"
+
     local url_clash url_mihomo url_yq url_subconverter url_ui
     local arch=$(uname -m)
     case "$arch" in
