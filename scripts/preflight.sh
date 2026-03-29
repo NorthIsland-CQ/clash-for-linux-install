@@ -103,7 +103,7 @@ _parse_args() {
 #######################################
 _prepare_zip() {
     # 加载已存在的压缩包路径
-    _load_zip >&/dev/null
+    _load_zip
     local required_zips=()
 
     # 检查内核压缩包是否存在
